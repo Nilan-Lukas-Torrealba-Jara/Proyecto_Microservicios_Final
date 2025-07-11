@@ -1,6 +1,18 @@
-# 🏥 Proyecto de Microservicios 
+# 🏥 Proyecto de Microservicios - Sistema de Gestión de Pacientes
 
-Este proyecto es un sistema de microservicios listo para ser ejecutado con Docker y Maven. Contiene los servicios esenciales para una arquitectura distribuida moderna.
+Este proyecto implementa un sistema distribuido usando **Spring Boot** y **arquitectura de microservicios**, ideal para manejar pacientes en un entorno hospitalario.
+
+---
+
+## 📦 Microservicios Incluidos
+
+| Servicio              | Puerto | Descripción                        |
+|----------------------|--------|------------------------------------|
+| MySQL                | 3306   | Base de datos relacional           |
+| Config Server        | 8888   | Servidor centralizado de configs   |
+| Eureka Server        | 8761   | Registro de microservicios         |
+| Gateway API          | 8080   | Punto de entrada a la aplicación   |
+| Paciente Service     | 8090   | CRUD de pacientes vía REST         |
 
 ---
 
@@ -12,69 +24,54 @@ Este proyecto es un sistema de microservicios listo para ser ejecutado con Docke
 
 ---
 
-## 📁 Estructura del Proyecto
-
-```
-├── docker-compose.yml
-├── microservice-config
-├── microservice-eureka
-├── microservice-gateway
-├── microservice-paciente
-├── pom.xml
-```
-
----
-
 ## 🚀 Cómo Ejecutar el Proyecto
 
-### 1. Abrir terminal en la carpeta raíz
-
-La raíz contiene el archivo `docker-compose.yml`.
-
-### 2. Compilar los microservicios
+### 1. Clonar o descomprimir el proyecto
 
 ```bash
-./mvnw clean package -DskipTests
+unzip proyecto_final_listo.zip
+cd proyecto_final_listo
 ```
 
-### 3. Ejecutar con Docker
+### 2. (Opcional) Compilar servicios con Maven
+
+```bash
+./mvnw clean install -DskipTests
+```
+
+### 3. Ejecutar con Docker Compose
 
 ```bash
 docker-compose up --build
 ```
 
-Este comando inicia:
+---
 
-| Servicio             | Puerto | Descripción                      |
-|----------------------|--------|----------------------------------|
-| MySQL                | 3306   | Base de datos                    |
-| Config Server        | 8888   | Servidor de configuración        |
-| Eureka Server        | 8761   | Registro de microservicios       |
-| API Gateway          | 8080   | Entrada principal a la app       |
-| Servicio Paciente    | 8090   | Microservicio REST de pacientes  |
+## 🌐 Acceso a los Servicios
+
+- **Eureka Dashboard**: [http://localhost:8761](http://localhost:8761)
+- **Swagger UI**: [http://localhost:8080/doc/swagger-ui](http://localhost:8080/doc/swagger-ui)
+- **API REST**:
+  - `GET http://localhost:8080/api/pacientes`
+  - `POST`, `PUT`, `DELETE` disponibles
 
 ---
 
-## 🧪 Pruebas
+## 🧪 Pruebas Unitarias
 
-### Eureka Dashboard
-```
-http://localhost:8761
-```
+Ejecutar con:
 
-### Swagger del servicio paciente
-```
-http://localhost:8080/doc/swagger-ui
+```bash
+mvn test
 ```
 
-### API REST
-```
-GET http://localhost:8080/api/pacientes
-```
+Incluye tests con JUnit y Mockito en:
+- `PacienteServiceTest`
+- `PacienteControllerTest`
 
 ---
 
-## 🧼 Apagar los servicios
+## 🧼 Apagar los Servicios
 
 ```bash
 CTRL+C
@@ -82,6 +79,20 @@ docker-compose down
 ```
 
 ---
+
+## 🧪 Datos de Ejemplo Precargados
+
+Ya vienen dos pacientes cargados automáticamente al iniciar:
+
+- **Juan Pérez**
+- **María Gómez**
+
+---
+
+## ✍️ Autor
+
+Proyecto desarrollado como entrega final de sistema de microservicios. Ideal para presentaciones académicas o institucionales.
+
 
 
 
