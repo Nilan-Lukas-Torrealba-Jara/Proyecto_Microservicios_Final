@@ -1,0 +1,21 @@
+server:
+  port: 8080
+
+spring:
+  application:
+    name: msvc-gateway
+  cloud:
+    gateway:
+      discovery:
+        locator:
+          enabled: true
+      routes:
+        - id: pacientes
+          uri: lb://msvc-paciente
+          predicates:
+            - Path=/api/pacientes/**
+
+eureka:
+  client:
+    register-with-eureka: true
+    fetch-registry: true

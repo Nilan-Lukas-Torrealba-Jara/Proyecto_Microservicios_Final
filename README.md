@@ -93,6 +93,3 @@ Ya vienen dos pacientes cargados automáticamente al iniciar:
 
 Proyecto desarrollado como entrega final de sistema de microservicios. Ideal para presentaciones académicas o institucionales.
 
-
-
-
